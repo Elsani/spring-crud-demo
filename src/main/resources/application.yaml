@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cloud_vendor?useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password: Root123!
+
+  jpa:
+    hibernate:
+      ddl-auto: create   # ose update, validate, none
+    show-sql: true
