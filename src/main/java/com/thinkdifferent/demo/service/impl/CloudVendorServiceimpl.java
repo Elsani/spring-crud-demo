@@ -1,5 +1,6 @@
 package com.thinkdifferent.demo.service.impl;
 
+import com.thinkdifferent.demo.exception.CloundVendorNotFoundException;
 import com.thinkdifferent.demo.model.CloudVendor;
 import com.thinkdifferent.demo.repository.CloudVendorRespository;
 import com.thinkdifferent.demo.service.CloudVendorService;
@@ -36,7 +37,9 @@ public class CloudVendorServiceimpl implements CloudVendorService {
 
     @Override
     public CloudVendor getCloudVendor(String cloudVendorId) {
-        return cloudVendorRespository.findById(cloudVendorId).get();
+        if(cloudVendorRespository.findById(cloudVendorId).isEmpty())
+            throw new CloundVendorNotFoundException("Requested CloudVendor Not Found");
+    return cloudVendorRespository.findById(cloudVendorId).get();
 
     }
 
